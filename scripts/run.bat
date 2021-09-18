@@ -1,0 +1,1 @@
+docker.exe run --rm -it langep/nginx-with-auth-request:latest

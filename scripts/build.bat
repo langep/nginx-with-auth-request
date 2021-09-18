@@ -1,0 +1,1 @@
+docker.exe build -t langep/nginx-with-auth-request:latest .
