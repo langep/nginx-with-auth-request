@@ -1,6 +1,11 @@
 FROM debian:stretch-slim
-
 LABEL maintainer="Patrick Lange <plange@ets.org>"
+
+ARG BUILD_NGINX_VERSION 1.13.12
+ARG INSTALL_AT /opt/nginx
+
+ENV NGINX_VERSION $BUILD_NGINX_VERSION
+ENV INSTALL_LOCATION $INSTALL_AT
 
 RUN set -x \
     && apt-get update \
@@ -11,10 +16,6 @@ RUN set -x \
         libpcre3-dev \
         zlib1g-dev \
     && rm -rf /var/lib/apt/lists/*
-
-
-ENV NGINX_VERSION 1.13.12
-ENV INSTALL_LOCATION /opt/nginx
 
 # Download, untar and symlink
 WORKDIR /src
