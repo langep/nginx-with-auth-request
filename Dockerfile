@@ -5,7 +5,12 @@ LABEL maintainer="Patrick Lange <plange@ets.org>"
 RUN set -x \
     && apt-get update \
     && apt-get install --no-install-recommends --no-install-suggests -y \
-        build-essential wget git libpcre3-dev zlib1g-dev
+        build-essential \
+        wget \
+        git \
+        libpcre3-dev \
+        zlib1g-dev \
+    && rm -rf /var/lib/apt/lists/*
 
 
 ENV NGINX_VERSION 1.13.12
@@ -50,4 +55,3 @@ EXPOSE 80
 STOPSIGNAL SIGTERM
 WORKDIR ${INSTALL_LOCATION}
 CMD ["./sbin/nginx", "-g", "daemon off;"]
-
